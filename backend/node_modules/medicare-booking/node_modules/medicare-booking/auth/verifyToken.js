@@ -6,6 +6,9 @@ export const authenticate = async (req, res, next) => {
   // Get Token From Headers
   const authToken = req.headers.authorization;
 
+  // Log the Authorization header
+  console.log("Authorization Header:", authToken);
+
   // Check token exists or not
   if (!authToken || !authToken.startsWith("Bearer ")) {
     return res
@@ -23,6 +26,11 @@ export const authenticate = async (req, res, next) => {
     req.userId = decoded.id;
     req.role = decoded.role;
 
+    // Set doctorId if the role is "doctor"
+    if (req.role === "doctor") {
+      req.doctorId = req.userId; // assuming the doctor ID is the same as the user ID
+    }
+
     next();
   } catch (err) {
     if (err.name === "TokenExpiredError") {
@@ -39,17 +47,37 @@ export const restrict = (roles) => async (req, res, next) => {
   const patient = await User.findById(userId);
   const doctor = await Doctor.findById(userId);
 
+  // if (patient) {
+  //   user = patient;
+  // }
+  // if (doctor) {
+  //   user = doctor;
+  // }
+
+  // if (!roles.includes(user.role)) {
+  //   return res
+  //     .status(401)
+  //     .json({ success: false, message: "You are not authorized" });
+  // }
   if (patient) {
     user = patient;
-  }
-  if (doctor) {
+  } else if (doctor) {
     user = doctor;
+  } else {
+    return res.status(404).json({
+      success: false,
+      message: "User not found",
+    });
   }
 
+  // Log the role and the roles allowed
+  console.log(`User Role: ${user.role}, Allowed Roles: ${roles}`);
+
   if (!roles.includes(user.role)) {
-    return res
-      .status(401)
-      .json({ success: false, message: "You are not authorized" });
+    return res.status(401).json({
+      success: false,
+      message: "You are not authorized",
+    });
   }
 
   next();
