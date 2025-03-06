@@ -1,0 +1,69 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Build directories
+dist/
+build/
+**/dist/
+**/build/
+
+# Cache directories
+.cache/
+.tmp/
+.temp/
+
+# Environment variables (Backend)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Frontend environment variables (React)
+**/.env
+**/.env.local
+**/.env.development
+**/.env.test
+**/.env.production
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Frontend specific (React)
+**/.next/
+**/out/
+**/.svelte-kit/
+
+# Backend specific
+*.pem
+*.crt
+*.key
+
+# Misc
+*.bak
+*.tmp
+*.patch
