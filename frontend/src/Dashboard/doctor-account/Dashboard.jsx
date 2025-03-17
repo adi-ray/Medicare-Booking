@@ -52,7 +52,7 @@ function Dashboard() {
 
                   <span className="sr-only">Info</span>
                   <div className="ml-3 text-sm font-medium">
-                    To get approval please complete your profile. We'll review
+                    To get approval please complete your profile. We&apos;ll review
                     manually and approve within 3 days.
                   </div>
                 </div>
@@ -76,7 +76,7 @@ function Dashboard() {
                         </h3>
 
                         <div className="flex items-center gap-[6px]">
-                          <span className="flex items-center gap-[6px] text-headingColor text-[14px] leading-5 lg:text-[16px] lg:leading-6 font-semibold ">
+                          <span className="flex items-center gap-[6px] text-headingColor text-[14px] leading-5 lg:text-[16px] lg:leading-6 font-semibold">
                             <img src={starIcon} alt="" />
                             {data.averageRating}
                           </span>

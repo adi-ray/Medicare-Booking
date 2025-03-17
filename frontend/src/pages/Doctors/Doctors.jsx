@@ -38,7 +38,7 @@ const Doctors = () => {
               <input
                 type="search"
                 placeholder="Search doctor by name or specification"
-                className="py-4 pl-4 pr-2 bg-transparent w-full focus:ouline-none cursor-pointer placeholder:text-textColor"
+                className="py-4 pl-4 pr-2 bg-transparent w-full focus:outline-none cursor-pointer placeholder:text-textColor"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
@@ -71,7 +71,7 @@ const Doctors = () => {
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center">What our patient say</h2>
-            <p className="text_para text-center">
+            <p className="text__para text-center">
               World-class care for everyone. Our health system offers unmatched,
               expert health care.
             </p>

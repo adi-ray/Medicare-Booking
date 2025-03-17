@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const FeedBackForm = () => {
   const [rating, setRating] = useState(0);
-  const [hover, sethover] = useState(0);
+  const [hover, setHover] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -65,10 +65,10 @@ const FeedBackForm = () => {
                     : "text-gray-400"
                 } bg-transparent border-none outline-none text-[22px] cursor-pointer`}
                 onClick={() => setRating(index)}
-                onMouseLeave={() => sethover(rating)}
-                onMouseEnter={() => sethover(index)}
+                onMouseLeave={() => setHover(rating)}
+                onMouseEnter={() => setHover(index)}
                 onDoubleClick={() => {
-                  sethover(0);
+                  setHover(0);
                   setRating(0);
                 }}
               >

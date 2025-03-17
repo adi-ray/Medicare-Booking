@@ -111,8 +111,6 @@ const Header = () => {
               <BiMenu className="w-6 h-6 cursor-pointer"></BiMenu>
             </span>
           </div>
-          {/*  ================= logo ================ */}
-          {/*  ================= logo ================ */}
         </div>
       </div>
     </header>

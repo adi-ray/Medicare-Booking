@@ -1,7 +1,7 @@
 const Error = ({ errorMessage }) => {
   return (
     <div className="flex items-center justify-center w-full h-full">
-      <h3 className="text-headingsColor text-xl leading-[30px] font-semibold">
+      <h3 className="text-headingColor text-xl leading-[30px] font-semibold">
         {errorMessage}
       </h3>
     </div>
