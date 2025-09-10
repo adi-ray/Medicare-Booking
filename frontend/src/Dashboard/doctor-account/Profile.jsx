@@ -110,8 +110,8 @@ const Profile = ({ doctorData }) => {
     addItem("qualifications", {
       startingDate: "",
       endingDate: "",
-      position: "",
-      hospital: "",
+      degree: "",
+      university: "",
     });
   };
 
@@ -473,7 +473,7 @@ const Profile = ({ doctorData }) => {
           <p className="form__label">About*</p>
           <textarea
             name="about"
-            rows={10}
+            rows={5}
             value={formData.about}
             placeholder="Write About You"
             onChange={handleInputChange}
@@ -484,7 +484,11 @@ const Profile = ({ doctorData }) => {
         <div className="mb-5 flex items-center gap-3">
           {formData.photo && (
             <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
-              <img src={formData.photo} alt="" className="w-full rounded-full" />
+              <img
+                src={formData.photo}
+                alt=""
+                className="w-full rounded-full"
+              />
             </figure>
           )}
 
