@@ -7,16 +7,14 @@ export const authenticate = async (req, res, next) => {
   const authToken = req.headers.authorization;
 
   // Log the Authorization header
-  console.log("Authorization Header:", authToken);
+  // console.log("Authorization Header:", authToken);
 
   // Check token exists or not
   if (!authToken || !authToken.startsWith("Bearer ")) {
-    return res
-      .status(401)
-      .json({
-        success: false,
-        message: "Token not found, authorization denied",
-      });
+    return res.status(401).json({
+      success: false,
+      message: "Token not found, authorization denied",
+    });
   }
 
   try {
@@ -47,37 +45,17 @@ export const restrict = (roles) => async (req, res, next) => {
   const patient = await User.findById(userId);
   const doctor = await Doctor.findById(userId);
 
-  // if (patient) {
-  //   user = patient;
-  // }
-  // if (doctor) {
-  //   user = doctor;
-  // }
-
-  // if (!roles.includes(user.role)) {
-  //   return res
-  //     .status(401)
-  //     .json({ success: false, message: "You are not authorized" });
-  // }
   if (patient) {
     user = patient;
-  } else if (doctor) {
+  }
+  if (doctor) {
     user = doctor;
-  } else {
-    return res.status(404).json({
-      success: false,
-      message: "User not found",
-    });
   }
 
-  // Log the role and the roles allowed
-  console.log(`User Role: ${user.role}, Allowed Roles: ${roles}`);
-
   if (!roles.includes(user.role)) {
-    return res.status(401).json({
-      success: false,
-      message: "You are not authorized",
-    });
+    return res
+      .status(401)
+      .json({ success: false, message: "You are not authorized" });
   }
 
   next();

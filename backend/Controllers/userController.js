@@ -68,7 +68,7 @@ export const getUserProfile = async (req, res) => {
     const { password, ...rest } = user._doc;
     res.status(200).json({
       success: true,
-      message: "Profile info is getting",
+      message: "Profile info retrieved successfully",
       data: { ...rest },
     });
   } catch (error) {
@@ -80,18 +80,18 @@ export const getUserProfile = async (req, res) => {
 
 export const getMyAppointments = async (req, res) => {
   try {
-    // retrive Appoinments From Booking For Specific User
+    // retrieve Appointments From Booking For Specific User
     const bookings = await Booking.find({ user: req.userId });
-    // extract Doctor IDs From Appoinment bookings
-    const doctorIds = bookings.map((el) => el.doctor.id);
-    // retrive Doctors Using Doctor IDs
+    // extract Doctor IDs From Appointment bookings
+    const doctorIds = bookings.map((el) => el.doctor);
+    // retrieve Doctors Using Doctor IDs
     const doctors = await Doctor.find({ _id: { $in: doctorIds } }).select(
       "-password"
     );
 
     res.status(200).json({
       success: true,
-      message: "Appointments are getting",
+      message: "Appointments retrieved successfully",
       data: doctors,
     });
   } catch (err) {

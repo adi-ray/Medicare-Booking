@@ -18,10 +18,10 @@ export const createReview = async (req, res) => {
   if (!req.body.doctor) req.body.doctor = req.params.doctorId;
   if (!req.body.user) req.body.user = req.userId;
 
-  const newRewiew = new Review(req.body);
+  const newReview = new Review(req.body);
 
   try {
-    const savedReview = await newRewiew.save();
+    const savedReview = await newReview.save();
     await Doctor.findByIdAndUpdate(req.body.doctor, {
       $push: { reviews: savedReview._id },
     });
